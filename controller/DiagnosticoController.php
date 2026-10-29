@@ -8,7 +8,7 @@ class DiagnosticoController
 
     public array $campos = [
         'cita_id' => 'citas',
-        'descripcion' => 'textarea',
+        'diagnostico' => 'textarea',
         'observaciones' => 'textarea',
         'fecha' => 'date',
     ];

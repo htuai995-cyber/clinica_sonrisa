@@ -8,10 +8,8 @@ class TratamientoController
 
     public array $campos = [
         'diagnostico_id' => 'diagnosticos',
-        'medicamento' => 'text',
+        'descripcion_tratamiento' => 'textarea',
         'indicaciones' => 'textarea',
-        'fecha_inicio' => 'date',
-        'fecha_fin' => 'date',
         'costo' => 'number',
     ];
 

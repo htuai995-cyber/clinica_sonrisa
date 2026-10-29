@@ -3,32 +3,77 @@ require_once __DIR__ . '/../controller/BaseController.php';
 exigirSesion();
 require __DIR__ . '/layout.php';
 
-$imagenes = [
-    'duenos' => 'photo-1558788353-f76d92427f16',
-    'veterinarios' => 'photo-1576091160399-112ba8d25d1d',
-    'mascotas' => 'photo-1583511655857-d19b40a7a54e',
-    'servicios' => 'photo-1516734212186-a967f81ad0d7',
-    'citas' => 'photo-1517849845537-4d257902454a',
-    'diagnosticos' => 'photo-1576200419199-391ae4be7a41',
-    'tratamientos' => 'photo-1559757148-5c350d0d3c56',
-    'pagos' => 'photo-1556742049-0cfed4f6a45d',
-    'reportes' => 'photo-1456513080510-7bf3a84b82f8',
+
+
+$modulosInicio = [
+    'pacientes' => [
+        'imagen' => 'paciente.jpg',
+        'descripcion' => 'Información y expedientes de tus pacientes.',
+    ],
+    'especialidades' => [
+        'imagen' => 'especialidad.jpg',
+        'descripcion' => 'Organiza las áreas de atención odontológica.',
+    ],
+    'odontologos' => [
+        'imagen' => 'odontologos.jpg',
+        'descripcion' => 'Administra el equipo profesional de la clínica.',
+    ],
+    'servicios' => [
+        'imagen' => 'servicios.jpg',
+        'descripcion' => 'Consulta tratamientos, precios y duración.',
+    ],
+    'citas' => [
+        'imagen' => 'citas.jpg',
+        'descripcion' => 'Programa y da seguimiento a cada consulta.',
+    ],
+    'diagnosticos' => [
+        'imagen' => 'diagnostico.jpg',
+        'descripcion' => 'Registra la evaluación clínica del paciente.',
+    ],
+    'tratamientos' => [
+        'imagen' => 'tratamiento.jpg',
+        'descripcion' => 'Consulta planes e indicaciones de tratamiento.',
+    ],
+    'pagos' => [
+        'imagen' => 'pagos.jpg',
+        'descripcion' => 'Lleva el control de pagos y referencias.',
+    ],
 ];
 
-layoutStart('Panel de control');
+layoutStart('Panel de control', true);
 ?>
-<p>Administra la atención, el historial clínico, los servicios y los pagos.</p>
+<section class="welcome-banner">
+    <div class="welcome-copy">
+        <span class="eyebrow">GESTIÓN CLÍNICA</span>
+        <h1>Una sonrisa saludable empieza con una buena atención.</h1>
+        <p>Hola, <?= e($_SESSION['nombre'] ?? 'bienvenido') ?>. Desde aquí puedes organizar la atención y el trabajo diario de tu clínica.</p>
+        <a class="welcome-action" href="citas.php">＋ <span>Programar una cita</span></a>
+        <div class="welcome-note"><span class="status-dot"></span> Tu espacio de trabajo está listo</div>
+    </div>
+    <div class="welcome-photo" role="img" aria-label="Consultorio odontológico moderno"></div>
+</section>
+
+<div class="section-heading">
+    <div>
+        <span class="eyebrow">ACCESOS DIRECTOS</span>
+        <h2>¿Qué necesitas gestionar?</h2>
+    </div>
+    <p>Elige una sección para comenzar.</p>
+</div>
+
 <div class="cards">
     <?php foreach (modulos() as $id => $modulo): ?>
         <a class="card" href="<?= e($modulo['url']) ?>">
             <img
                 loading="lazy"
                 alt="<?= e($modulo['nombre']) ?>"
-                src="https://images.unsplash.com/<?= e($imagenes[$id]) ?>?w=700&amp;q=75"
+                src="../imagenes/<?= e($modulosInicio[$id]['imagen']) ?>"
             >
-            <div>
+            <div class="card-content">
+                <span class="card-label">CLÍNICA</span>
                 <h2><?= e($modulo['nombre']) ?></h2>
-                <span>Administrar registros →</span>
+                <p><?= e($modulosInicio[$id]['descripcion']) ?></p>
+                <span class="card-link">Abrir sección <span aria-hidden="true">→</span></span>
             </div>
         </a>
     <?php endforeach; ?>

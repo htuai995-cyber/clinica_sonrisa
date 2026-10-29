@@ -6,13 +6,9 @@
         <label>
             <?= e(ucwords(str_replace('_', ' ', $campo))) ?>
 
-            <?php if (in_array($tipo, ['duenos', 'mascotas', 'veterinarios', 'servicios', 'citas', 'diagnosticos'], true)): ?>
+            <?php if (in_array($tipo, ['pacientes', 'odontologos', 'especialidades', 'servicios', 'citas', 'diagnosticos'], true)): ?>
                 <?php
-                $tabla = $tipo;
-                $columna = in_array($tipo, ['citas', 'diagnosticos'], true) ? 'id' : 'nombre';
-                $opciones = db()->query(
-                    "SELECT id, `$columna` AS etiqueta FROM `$tabla` ORDER BY id DESC LIMIT 500"
-                )->fetchAll();
+                $opciones = opcionesReferencia($tipo);
                 ?>
                 <select name="<?= e($campo) ?>" required>
                     <option value="">Seleccione...</option>
@@ -31,7 +27,7 @@
                 $opciones = [
                     'estado_cita' => ['pendiente', 'confirmada', 'atendida', 'cancelada'],
                     'estado_pago' => ['pendiente', 'pagado', 'anulado'],
-                    'metodo_pago' => ['contado', 'tarjeta_credito', 'tarjeta_debito', 'yape'],
+                    'metodo_pago' => ['efectivo', 'tarjeta_credito', 'tarjeta_debito', 'yape'],
                 ][$tipo];
                 ?>
                 <select name="<?= e($campo) ?>">
@@ -46,7 +42,7 @@
                 </select>
 
             <?php elseif ($tipo === 'textarea'): ?>
-                <textarea name="<?= e($campo) ?>"><?= e($edit[$campo] ?? '') ?></textarea>
+                <textarea name="<?= e($campo) ?>" <?= in_array($campo, ['diagnostico', 'descripcion_tratamiento'], true) ? 'required' : '' ?>><?= e($edit[$campo] ?? '') ?></textarea>
 
             <?php else: ?>
                 <?php
@@ -60,7 +56,7 @@
                     type="<?= e($tipo) ?>"
                     value="<?= e($valor) ?>"
                     <?= $tipo === 'number' ? 'step="0.01" min="0"' : '' ?>
-                    <?= in_array($campo, ['nombre', 'fecha_hora', 'monto'], true) ? 'required' : '' ?>
+                    <?= in_array($campo, ['nombre', 'nombres', 'apellidos', 'dni', 'diagnostico', 'descripcion_tratamiento', 'fecha_hora', 'monto', 'precio'], true) ? 'required' : '' ?>
                 >
             <?php endif; ?>
         </label>

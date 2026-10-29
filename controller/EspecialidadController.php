@@ -1,24 +1,20 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/../model/Dueno.php';
+require_once __DIR__ . '/../model/Especialidad.php';
 
-class DuenoController
+class EspecialidadController
 {
-    public Dueno $modelo;
+    public Especialidad $modelo;
 
     public array $campos = [
         'nombre' => 'text',
-        'telefono' => 'text',
-        'email' => 'email',
-        'direccion' => 'text',
-        'documento' => 'text',
     ];
 
-    public string $titulo = 'Dueños';
+    public string $titulo = 'Especialidades';
 
     public function __construct()
     {
-        $this->modelo = new Dueno(db());
+        $this->modelo = new Especialidad(db());
     }
 
     public function procesar(): string
@@ -43,7 +39,7 @@ class DuenoController
             }
 
             notificar('Operación realizada correctamente');
-            redirigir('duenos.php');
+            redirigir('especialidades.php');
         } catch (PDOException $ex) {
             error_log($ex->getMessage());
             return 'No se pudo completar la operación. Verifique referencias, duplicados y datos.';

@@ -8,12 +8,12 @@ layoutStart($titulo);
 <?php endif; ?>
 
 <section class="panel">
-    <h2><?= $edit ? 'Editar' : 'Nuevo' ?> registro</h2>
+    <h2><?= $edit ? 'Editar' : 'Nueva' ?> especialidad</h2>
     <?php require __DIR__ . '/form.php'; ?>
 </section>
 
 <section class="panel">
-    <h2>Registros (<?= count($rows) ?>)</h2>
+    <h2>Especialidades (<?= count($rows) ?>)</h2>
     <?php require __DIR__ . '/lista.php'; ?>
 </section>
 

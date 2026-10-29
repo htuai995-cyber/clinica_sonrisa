@@ -1,19 +1,19 @@
-# Sistema de Veterinaria MVC
+# Sistema de Clínica Odontológica MVC
 
 ## Estructura
 - `config/database.php`: **único archivo de configuración**, conexión MySQL mediante PDO.
 - `controller/`: controlador de autenticación, controlador base y un controlador por módulo.
 - `model/`: modelo de usuarios, modelo base y un modelo por tabla operativa.
 - `views/`: login, panel, layout y carpeta propia por módulo con `index.php`, `form.php` y `lista.php`.
-- `database/veterinaria.sql`: estructura MySQL y un servicio de ejemplo.
+- `database/veterinaria.sql`: esquema MySQL de la clínica odontológica y un servicio inicial.
 - `assetes/` e `imagenes/`: archivos de la interfaz.
 
 ## Instalación con XAMPP
-1. Copia la carpeta `SistemaVeterinariaMVC` dentro de `htdocs`.
+1. Coloca la carpeta del proyecto dentro de `htdocs`.
 2. Inicia Apache y MySQL en XAMPP.
-3. Importa `database/veterinaria.sql` desde MySQL Workbench o phpMyAdmin.
-4. Ajusta usuario, contraseña y nombre de base de datos en `config/database.php` si es necesario.
-5. Abre `http://localhost/SistemaVeterinariaMVC/`.
+3. Importa `database/veterinaria.sql` desde MySQL Workbench o phpMyAdmin. Se crea la base `clinica_odontologica_db`.
+4. Ajusta usuario y contraseña de MySQL en `config/database.php` si es necesario.
+5. Abre `http://localhost/sistema-veterinaria-26-2/`.
 
 ## ¿Cómo ingreso al login?
 **No hay usuarios predeterminados.** La primera vez:
@@ -25,7 +25,7 @@
 El registro público crea usuarios con rol `recepcion`. No se suministran cuentas ni contraseñas de administrador por defecto.
 
 ## Notas
-- Cada módulo dispone de acciones de creación, consulta, edición y eliminación.
+- Los módulos de pacientes, especialidades, odontólogos, servicios, citas, diagnósticos, tratamientos y pagos disponen de acciones de creación, consulta, edición y eliminación.
 - El sistema utiliza parámetros preparados PDO y tokens CSRF.
 - Pagos con tarjeta y Yape son registros internos; **no** ejecutan cobros reales.
 - Para uso productivo hacen falta permisos por rol, HTTPS, auditoría, copias de seguridad y pruebas de integración.

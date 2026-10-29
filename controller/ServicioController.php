@@ -10,7 +10,7 @@ class ServicioController
         'nombre' => 'text',
         'descripcion' => 'textarea',
         'precio' => 'number',
-        'duracion_min' => 'number',
+        'duracion_min' => 'integer',
     ];
 
     public string $titulo = 'Servicios';

@@ -1,24 +1,26 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/../model/Veterinario.php';
+require_once __DIR__ . '/../model/Paciente.php';
 
-class VeterinarioController
+class PacienteController
 {
-    public Veterinario $modelo;
+    public Paciente $modelo;
 
     public array $campos = [
-        'nombre' => 'text',
-        'colegiatura' => 'text',
-        'especialidad' => 'text',
+        'nombres' => 'text',
+        'apellidos' => 'text',
+        'dni' => 'text',
         'telefono' => 'text',
         'email' => 'email',
+        'direccion' => 'text',
+        'fecha_nacimiento' => 'date',
     ];
 
-    public string $titulo = 'Veterinarios';
+    public string $titulo = 'Pacientes';
 
     public function __construct()
     {
-        $this->modelo = new Veterinario(db());
+        $this->modelo = new Paciente(db());
     }
 
     public function procesar(): string
@@ -43,7 +45,7 @@ class VeterinarioController
             }
 
             notificar('Operación realizada correctamente');
-            redirigir('veterinarios.php');
+            redirigir('pacientes.php');
         } catch (PDOException $ex) {
             error_log($ex->getMessage());
             return 'No se pudo completar la operación. Verifique referencias, duplicados y datos.';

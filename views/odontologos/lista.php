@@ -17,13 +17,11 @@
                         <td><?= e($fila[$campo] ?? '') ?></td>
                     <?php endforeach; ?>
                     <td>
-                        <a href="mascotas.php?editar=<?= e($fila['id']) ?>">Editar</a>
+                        <a href="odontologos.php?editar=<?= e($fila['id']) ?>">Editar</a>
                         <form method="post" onsubmit="return confirm('¿Eliminar registro?')">
                             <input type="hidden" name="csrf" value="<?= e(csrf()) ?>">
                             <input type="hidden" name="id" value="<?= e($fila['id']) ?>">
-                            <button type="submit" class="danger" name="accion" value="eliminar">
-                                Eliminar
-                            </button>
+                            <button type="submit" class="danger" name="accion" value="eliminar">Eliminar</button>
                         </form>
                     </td>
                 </tr>

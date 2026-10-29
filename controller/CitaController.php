@@ -7,15 +7,15 @@ class CitaController
     public Cita $modelo;
 
     public array $campos = [
-        'mascota_id' => 'mascotas',
-        'veterinario_id' => 'veterinarios',
+        'paciente_id' => 'pacientes',
+        'odontologo_id' => 'odontologos',
         'servicio_id' => 'servicios',
         'fecha_hora' => 'datetime-local',
         'estado' => 'estado_cita',
         'motivo' => 'textarea',
     ];
 
-    public string $titulo = 'Citas veterinarias';
+    public string $titulo = 'Citas odontológicas';
 
     public function __construct()
     {

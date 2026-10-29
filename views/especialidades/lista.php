@@ -3,9 +3,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <?php foreach ($campos as $campo => $tipo): ?>
-                    <th><?= e(ucwords(str_replace('_', ' ', $campo))) ?></th>
-                <?php endforeach; ?>
+                <th>Nombre</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -13,17 +11,13 @@
             <?php foreach ($rows as $fila): ?>
                 <tr>
                     <td><?= e($fila['id']) ?></td>
-                    <?php foreach ($campos as $campo => $tipo): ?>
-                        <td><?= e($fila[$campo] ?? '') ?></td>
-                    <?php endforeach; ?>
+                    <td><?= e($fila['nombre']) ?></td>
                     <td>
-                        <a href="duenos.php?editar=<?= e($fila['id']) ?>">Editar</a>
+                        <a href="especialidades.php?editar=<?= e($fila['id']) ?>">Editar</a>
                         <form method="post" onsubmit="return confirm('¿Eliminar registro?')">
                             <input type="hidden" name="csrf" value="<?= e(csrf()) ?>">
                             <input type="hidden" name="id" value="<?= e($fila['id']) ?>">
-                            <button type="submit" class="danger" name="accion" value="eliminar">
-                                Eliminar
-                            </button>
+                            <button type="submit" class="danger" name="accion" value="eliminar">Eliminar</button>
                         </form>
                     </td>
                 </tr>
